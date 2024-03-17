@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { createProduct } from "../../redux/actions/product";
 import { categoriesData } from "../../static/data";
 import { toast } from "react-toastify";
-
+import { Circles } from "react-loader-spinner";
 const CreateProduct = () => {
   const { seller } = useSelector((state) => state.seller);
   const { success, error } = useSelector((state) => state.products);
@@ -20,7 +20,7 @@ const CreateProduct = () => {
   const [originalPrice, setOriginalPrice] = useState();
   const [discountPrice, setDiscountPrice] = useState();
   const [stock, setStock] = useState();
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -49,9 +49,9 @@ const CreateProduct = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const newForm = new FormData();
 
     images.forEach((image) => {
@@ -65,19 +65,25 @@ const CreateProduct = () => {
     newForm.append("discountPrice", discountPrice);
     newForm.append("stock", stock);
     newForm.append("shopId", seller._id);
-    dispatch(
-      createProduct({
-        name,
-        description,
-        category,
-        tags,
-        originalPrice,
-        discountPrice,
-        stock,
-        shopId: seller._id,
-        images,
-      })
-    );
+    try {
+      await dispatch(
+        createProduct({
+          name,
+          description,
+          category,
+          tags,
+          originalPrice,
+          discountPrice,
+          stock,
+          shopId: seller._id,
+          images,
+        })
+      );
+    } catch (error) {
+      // Handle error
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -216,11 +222,21 @@ const CreateProduct = () => {
           </div>
           <br />
           <div>
+          {loading ? (
+                <div style={{ width: "100%", display: "flex",justifyContent:"center",alignItems:"center" }}>
+                  <Circles
+                      height={50}
+                      width={50}
+                      color="cyan"
+                      ariaLabel="circles-loading"
+                    />
+                    </div>
+              ) : (
             <input
               type="submit"
-              value="Create"
+              value="Create6"
               className="mt-2 cursor-pointer appearance-none text-center block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-            />
+            />)}
           </div>
         </div>
       </form>
