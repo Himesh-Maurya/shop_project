@@ -52,6 +52,7 @@ const CreateEvent = () => {
     : "";
 
   useEffect(() => {
+    console.log("kkkkk")
     if (error) {
       toast.error(error);
     }
@@ -103,6 +104,7 @@ const CreateEvent = () => {
     // dispatch(createevent(data));
     // setLoading(false);
     console.log("sdflllsd")
+    console.log("dddd",data)
     try {
       await dispatch(createevent(data));
       toast.success("Event created successfully!");

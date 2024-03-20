@@ -203,14 +203,29 @@ const ProfileContent = ({ active }) => {
 const AllOrders = () => {
   const { user } = useSelector((state) => state.user);
   const { orders } = useSelector((state) => state.order);
+  const {allProducts,isLoading} = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
+console.log("allProduct",allProducts)
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
   }, []);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    // {
+    //   field: "order1",
+    //   headerName: "Order Image",
+    //   flex: 1,
+    //   minWidth: 150,
+    //   sortable: false,
+    //   renderCell: (params) => {
+    //    // const order = params.row;
+    //    console.log("param",params.row)
+    //     return (
+    //     <div>{JSON.stringify(params.row)}</div>
+    //     );
+    //   },
+    // },
+    { field: "id", headerName: "Order ID0", minWidth: 150, flex: 0.7 },
 
     {
       field: "status",
@@ -261,10 +276,12 @@ const AllOrders = () => {
   ];
 
   const row = [];
-
+  console.log("llllll",orders)
   orders &&
     orders.forEach((item) => {
+      
       row.push({
+        //id4: item._id,
         id: item._id,
         itemsQty: item.cart.length,
         total: "US$ " + item.totalPrice,
@@ -298,7 +315,7 @@ const AllRefundOrders = () => {
     orders && orders.filter((item) => item.status === "Processing refund");
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID1", minWidth: 150, flex: 0.7 },
 
     {
       field: "status",
