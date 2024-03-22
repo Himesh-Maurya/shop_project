@@ -179,11 +179,9 @@ const App = () => {
           }
         />
         <Route
-          path="/dashboard-create-product"
+          path="/dashboard-create-product/:id"
           element={
-            <SellerProtectedRoute>
-              <ShopCreateProduct />
-            </SellerProtectedRoute>
+            <ShopCreateProduct />
           }
         />
         <Route

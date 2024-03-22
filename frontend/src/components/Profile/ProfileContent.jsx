@@ -205,7 +205,7 @@ const AllOrders = () => {
   const { orders } = useSelector((state) => state.order);
   const {allProducts,isLoading} = useSelector((state) => state.products);
   const dispatch = useDispatch();
-console.log("allProduct",allProducts)
+console.log("orders",orders)
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
   }, []);

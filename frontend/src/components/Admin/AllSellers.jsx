@@ -10,13 +10,13 @@ import { server } from "../../server";
 import { toast } from "react-toastify";
 import { getAllSellers } from "../../redux/actions/sellers";
 import { Link } from "react-router-dom";
-
+import CreateProduct from "../Shop/CreateProduct"
 const AllSellers = () => {
   const dispatch = useDispatch();
   const { sellers } = useSelector((state) => state.seller);
   const [open, setOpen] = useState(false);
   const [userId, setUserId] = useState("");
-
+console.log("sellers admin",sellers)
   useEffect(() => {
     dispatch(getAllSellers());
   }, [dispatch]);
@@ -66,17 +66,20 @@ const AllSellers = () => {
         field: "  ",
         flex: 1,
         minWidth: 150,
-        headerName: "Preview Shop",
+        headerName: "Create Shop",
         type: "number",
         sortable: false,
         renderCell: (params) => {
           return (
             <>
-            <Link to={`/shop/preview/${params.id}`}>
-            <Button>
+            
+            {/* <Link to={`/shop/preview/${params.id}`}> */}
+            <Link to={`/dashboard-create-product/${params.id}`}>
+            <Button >
                 <AiOutlineEye size={20} />
               </Button>
-            </Link>
+              </Link>
+            {/* </Link> */}
             </>
           );
         },

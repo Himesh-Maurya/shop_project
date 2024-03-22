@@ -10,7 +10,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 const AllOrders = () => {
   const { orders, isLoading } = useSelector((state) => state.order);
   const { seller } = useSelector((state) => state.seller);
-
+  console.log("orders",orders)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const AllOrders = () => {
   ];
 
   const row = [];
-
+console.log("orders",orders)
   orders &&
     orders.forEach((item) => {
       row.push({

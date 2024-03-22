@@ -6,8 +6,13 @@ import { createProduct } from "../../redux/actions/product";
 import { categoriesData } from "../../static/data";
 import { toast } from "react-toastify";
 import { Circles } from "react-loader-spinner";
+import { useParams } from 'react-router-dom';
 const CreateProduct = () => {
-  const { seller } = useSelector((state) => state.seller);
+  //const { seller } = useSelector((state) => state.seller);
+  let { id } = useParams();
+  const seller=id;
+  console.log("seller data",seller)
+  console.log("seller data id",id)
   const { success, error } = useSelector((state) => state.products);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,7 +32,8 @@ const CreateProduct = () => {
     }
     if (success) {
       toast.success("Product created successfully!");
-      navigate("/dashboard");
+      
+      navigate("/admin-sellers");
       window.location.reload();
     }
   }, [dispatch, error, success]);
@@ -75,7 +81,7 @@ const CreateProduct = () => {
           originalPrice,
           discountPrice,
           stock,
-          shopId: seller._id,
+          shopId: seller,
           images,
         })
       );

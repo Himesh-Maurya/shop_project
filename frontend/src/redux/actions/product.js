@@ -2,6 +2,7 @@ import axios from "axios";
 import { server } from "../../server";
 
 // create product
+
 export const createProduct =
   (
     name,
@@ -15,6 +16,7 @@ export const createProduct =
     images
   ) =>
   async (dispatch) => {
+    console.log("name back",name)
     try {
       dispatch({
         type: "productCreateRequest",
