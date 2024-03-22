@@ -66,7 +66,7 @@ console.log("sellers admin",sellers)
         field: "  ",
         flex: 1,
         minWidth: 150,
-        headerName: "Create Shop",
+        headerName: "Create Shop4",
         type: "number",
         sortable: false,
         renderCell: (params) => {
@@ -84,6 +84,26 @@ console.log("sellers admin",sellers)
           );
         },
       },
+      {
+        field: "",
+        flex: 1,
+        minWidth: 150,
+        headerName: "Create Event",
+        type: "number",
+        sortable: false,
+        renderCell: (params) => {
+          return (
+            <>
+              <Link to={`/dashboard-create-event/${params.id}`}>
+                <Button>
+                  <AiOutlineEye size={20} />
+                </Button>
+              </Link>
+            </>
+          );
+        },
+      },
+      
     {
       field: " ",
       flex: 1,
@@ -123,7 +143,7 @@ console.log("sellers admin",sellers)
           <DataGrid
             rows={row}
             columns={columns}
-            pageSize={10}
+            pageSize={20}
             disableSelectionOnClick
             autoHeight
           />

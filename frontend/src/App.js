@@ -218,7 +218,7 @@ const App = () => {
           }
         />
         <Route
-          path="/dashboard-create-event"
+          path="/dashboard-create-event/:id"
           element={
             <SellerProtectedRoute>
               <ShopCreateEvents />

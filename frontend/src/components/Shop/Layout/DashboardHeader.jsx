@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 const DashboardHeader = () => {
-  //const { seller } = useSelector((state) => state.seller);
-  const {id}=useParams()
-  const seller=id;
+  const { seller } = useSelector((state) => state.seller);
+  console.log("llll",seller)
+  // const {id}=useParams()
+  // const seller=id;
   return (
     <div className="w-full h-[80px] bg-white shadow sticky top-0 left-0 z-30 flex items-center justify-between px-4">
       <div>
@@ -54,12 +55,12 @@ const DashboardHeader = () => {
             />
           </Link>
           <Link to={`/shop/${seller}`}>
-            {/* <img
+            <img
               src={`${seller.avatar?.url}`}
               alt=""
               className="w-[50px] h-[50px] rounded-full object-cover"
-            /> */}
-            <h1>klmn</h1>
+            />
+            {/* <h1>klmn</h1> */}
           </Link>
         </div>
       </div>
