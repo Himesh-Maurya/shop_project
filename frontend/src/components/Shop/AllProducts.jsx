@@ -11,7 +11,7 @@ import Loader from "../Layout/Loader";
 const AllProducts = () => {
   const { products, isLoading } = useSelector((state) => state.products);
   const { seller } = useSelector((state) => state.seller);
-
+console.log("all product seller",seller)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,8 +19,9 @@ const AllProducts = () => {
   }, [dispatch]);
 
   const handleDelete = (id) => {
+    console.log("delete id",id)
     dispatch(deleteProduct(id));
-    window.location.reload();
+   // window.location.reload();
   };
 
   const columns = [

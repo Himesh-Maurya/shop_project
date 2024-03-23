@@ -9,7 +9,8 @@ import styles from "../../styles/styles";
 import Loader from "../Layout/Loader";
 import { server } from "../../server";
 import { toast } from "react-toastify";
-
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const AllCoupons = () => {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
@@ -21,13 +22,20 @@ const AllCoupons = () => {
   const [value, setValue] = useState(null);
   const { seller } = useSelector((state) => state.seller);
   const { products } = useSelector((state) => state.products);
-
+  console.log("all productus",products)
+const {id}=useParams()
+console.log("param id",id)
+console.log("seller.id",seller)
+let sellerId=id;
+if(id==undefined){
+sellerId=seller._id
+}
   const dispatch = useDispatch();
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`${server}/coupon/get-coupon/${seller._id}`, {
+      .get(`${server}/coupon/get-coupon/${sellerId}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -58,13 +66,14 @@ const AllCoupons = () => {
           maxAmount,
           selectedProducts,
           value,
-          shopId: seller._id,
+          shopId: sellerId,
         },
         { withCredentials: true }
       )
       .then((res) => {
        toast.success("Coupon code created successfully!");
        setOpen(false);
+      //  navigate("/Show-All-coupouns")
        window.location.reload();
       })
       .catch((error) => {
@@ -119,22 +128,23 @@ const AllCoupons = () => {
 
   return (
     <>
-      {isLoading ? (
+     {isLoading ? (
         <Loader />
       ) : (
         <div className="w-full mx-8 pt-1 mt-10 bg-white">
           <div className="w-full flex justify-end">
-            <div
+          {id==undefined?null: <div
               className={`${styles.button} !w-max !h-[45px] px-3 !rounded-[5px] mr-3 mb-3`}
               onClick={() => setOpen(true)}
             >
               <span className="text-white">Create Coupon Code</span>
-            </div>
+            </div>}
+           
           </div>
           <DataGrid
             rows={row}
             columns={columns}
-            pageSize={10}
+            pageSize={20}
             disableSelectionOnClick
             autoHeight
           />

@@ -103,6 +103,25 @@ console.log("sellers admin",sellers)
           );
         },
       },
+      {
+        field: "kk",
+        flex: 1,
+        minWidth: 150,
+        headerName: "Create Coupan",
+        type: "number",
+        sortable: false,
+        renderCell: (params) => {
+          return (
+            <>
+              <Link to={`/dashboard-create-coupan/${params.id}`}>
+                <Button>
+                  <AiOutlineEye size={20} />
+                </Button>
+              </Link>
+            </>
+          );
+        },
+      },
       
     {
       field: " ",

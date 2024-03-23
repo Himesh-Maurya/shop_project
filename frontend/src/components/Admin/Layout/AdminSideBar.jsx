@@ -56,7 +56,7 @@ const AdminSideBar = ({ active }) => {
               active === 3 ? "text-[crimson]" : "text-[#555]"
             }`}
           >
-            All Sellers3
+            All Sellers4
           </h5>
         </Link>
       </div>
@@ -94,7 +94,7 @@ const AdminSideBar = ({ active }) => {
           </h5>
         </Link>
       </div>
-
+      
       <div className="w-full flex items-center p-4">
         <Link to="/admin-events" className="w-full flex items-center">
           <MdOutlineLocalOffer
