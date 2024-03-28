@@ -213,26 +213,26 @@ const App = () => {
         <Route
           path="/dashboard-products"
           element={
-           
+            <SellerProtectedRoute>
               <ShopAllProducts />
+             </SellerProtectedRoute>
             
           }
         />
         <Route
           path="/dashboard-create-event/:id"
           element={
-            <SellerProtectedRoute>
+            // <SellerProtectedRoute>
               <ShopCreateEvents />
-            </SellerProtectedRoute>
+            // </SellerProtectedRoute>
           }
         />
          <Route
           path="/dashboard-create-coupan/:id"
           element={
-            <SellerProtectedRoute>
+            
             <AllCoupons/>
-              {/* <ShopCreateEvents /> */}
-            </SellerProtectedRoute>
+            
           }
         />
         <Route
@@ -246,9 +246,17 @@ const App = () => {
         <Route
           path="/dashboard-coupouns"
           element={
-            <SellerProtectedRoute>
+             <SellerProtectedRoute>
               <ShopAllCoupouns />
-            </SellerProtectedRoute>
+             </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin-dashboard-coupouns"
+          element={
+            
+              <ShopAllCoupouns />
+            
           }
         />
       

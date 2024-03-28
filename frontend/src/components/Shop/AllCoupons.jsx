@@ -34,8 +34,12 @@ sellerId=seller._id
 
   useEffect(() => {
     setIsLoading(true);
+    let p=`${server}/coupon/get-coupon-admin/${sellerId}`
+    if(id==undefined){
+      p=`${server}/coupon/get-coupon/${sellerId}`
+    }
     axios
-      .get(`${server}/coupon/get-coupon/${sellerId}`, {
+      .get(p, {
         withCredentials: true,
       })
       .then((res) => {
@@ -47,8 +51,12 @@ sellerId=seller._id
       });
   }, [dispatch]);
 
-  const handleDelete = async (id) => {
-    axios.delete(`${server}/coupon/delete-coupon/${id}`,{withCredentials: true}).then((res) => {
+  const handleDelete = async (id1) => {
+    let q=`${server}/coupon/delete-coupon-admin/${id1}`
+    if(id==undefined){
+      q=`${server}/coupon/delete-coupon/${id1}`
+    }
+    axios.delete(q,{withCredentials: true}).then((res) => {
       toast.success("Coupon code deleted succesfully!")
     })
     window.location.reload();

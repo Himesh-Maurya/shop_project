@@ -62,7 +62,7 @@ const CreateEvent = () => {
     if (success) {
       toast.success("Event created successfully!");
       navigate("/admin-sellers");
-      //window.location.reload();
+      window.location.reload();
     }
   }, [dispatch, error, success]);
 

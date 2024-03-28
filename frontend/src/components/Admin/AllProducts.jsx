@@ -13,13 +13,17 @@ import { useState } from "react";
 
 const AllProducts = () => {
   const [data, setData] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
     axios.get(`${server}/product/admin-all-products`, {withCredentials: true}).then((res) => {
         setData(res.data.products);
     })
   }, []);
-
+  const handleDelete = (id) => {
+    console.log("delete id admin",id)
+    dispatch(deleteProduct(id));
+    window.location.reload();
+  };
   const columns = [
     { field: "id", headerName: "Product Id", minWidth: 150, flex: 0.7 },
     {
@@ -44,7 +48,7 @@ const AllProducts = () => {
 
     {
       field: "sold",
-      headerName: "Sold out",
+      headerName: "Sold out6",
       type: "number",
       minWidth: 130,
       flex: 0.6,
@@ -64,6 +68,23 @@ const AllProducts = () => {
                 <AiOutlineEye size={20} />
               </Button>
             </Link>
+          </>
+        );
+      },
+    },
+    {
+      field: "Delete",
+      flex: 0.8,
+      minWidth: 120,
+      headerName: "",
+      type: "number",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+          <>
+            <Button onClick={() => handleDelete(params.id)}>
+              <AiOutlineDelete size={20} />
+            </Button>
           </>
         );
       },

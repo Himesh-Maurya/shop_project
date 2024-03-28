@@ -90,7 +90,7 @@ const AdminSideBar = ({ active }) => {
               active === 5 ? "text-[crimson]" : "text-[#555]"
             }`}
           >
-            All Products
+            All Products6
           </h5>
         </Link>
       </div>

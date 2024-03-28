@@ -55,7 +55,7 @@ export const deleteEvent = (id) => async (dispatch) => {
         withCredentials: true,
       }
     );
-
+    console.log("klkl",data)
     dispatch({
       type: "deleteeventSuccess",
       payload: data.message,

@@ -20,8 +20,9 @@ const AllEvents = () => {
   }, [dispatch]);
 
   const handleDelete = (id) => {
+    console.log("id",id)
     dispatch(deleteEvent(id));
-    window.location.reload();
+     window.location.reload();
   }
 
   const columns = [

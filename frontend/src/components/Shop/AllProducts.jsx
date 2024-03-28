@@ -48,7 +48,7 @@ console.log("all product seller",seller)
 
     {
       field: "sold",
-      headerName: "Sold out",
+      headerName: "Sold out8",
       type: "number",
       minWidth: 130,
       flex: 0.6,
